@@ -349,6 +349,24 @@
                 container.innerHTML += card;
             });
 
+            // Update Social Links and Footer
+            const contactSection = siteDom.querySelector('#contact');
+            if (contactSection) {
+                const socialDiv = contactSection.querySelector('.flex.space-x-4.mb-6');
+                if (socialDiv) {
+                    socialDiv.innerHTML = `
+                        <a href="https://play.google.com/store/apps/dev?id=5331897451907345688" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-google-play"></i></a>
+                        <a href="https://www.instagram.com/rynkargames/" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.youtube.com/@RynkarGames/shorts" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-youtube"></i></a>
+                    `;
+                }
+                
+                const quickLinks = contactSection.querySelector('ul.space-y-4');
+                if (quickLinks && !quickLinks.innerHTML.includes('app-ads.txt')) {
+                    quickLinks.innerHTML += `<li><a href="app-ads.txt" class="hover:text-indigo-400 transition-colors">app-ads.txt</a></li>`;
+                }
+            }
+
             return "<!DOCTYPE html>\n" + siteDom.documentElement.outerHTML;
         }
 
