@@ -1,0 +1,50 @@
+﻿{
+  "siteSettings": {
+    "logo": "RYNKAR GAMES",
+    "primaryColor": "#6366f1",
+    "secondaryColor": "#a855f7",
+    "contactEmail": "rynkarthegod@gmail.com",
+    "socialLinks": {
+      "googlePlay": "https://play.google.com/store/apps/dev?id=5331897451907345688",
+      "instagram": "https://www.instagram.com/rynkargames/",
+      "youtube": "https://www.youtube.com/@RynkarGames/shorts"
+    }
+  },
+  "hero": {
+    "title": "Don't push too hard <br> <span class=\"text-gradient\">Neither do we.</span>",
+    "description": "Pretty chill.\nNot very corporate.\nDefinitely making games.\n\nRynkar Games is an indie game studio fueled by curiosity, questionable ideas, and the occasional \"this should probably work\" moment.\n\nWe don't have a 20-page mission statement.\nWe don't call ourselves \"industry disruptors.\"\nWe just enjoy making games that people can have fun with.\n\nSome ideas become games.\nSome become bugs.\nSometimes it's hard to tell which is which.\n\nIf you're here, welcome.\nGrab a game, have fun, and if you find a bug... just pretend it's a feature for a little while.",
+    "backgroundImage": "assets/general-images/RynkarGamesBackground.jpg"
+  },
+  "about": {
+    "title": "Who We Are",
+    "description": "No need to overthink it. We're just making games that people can enjoy.\nWe like them too, which automatically makes us the best studio. (Source: us.)"
+  },
+  "games": [
+    {
+      "id": 1,
+      "title": "Money Empire: Get Rich",
+      "category": "Arcade-Idle",
+      "description": "Money, gold, silver, cryptocurrency... \nStart with a little cash and build your own minting empire!\nPrint your own currency, hire new employees, and don't forget to maintain your \nbrand-new printing machines!\n",
+      "image": "",
+      "video": "",
+      "youtubeId": "",
+      "links": {
+        "googlePlay": "https://play.google.com/store/apps/details?id=com.rynkargames.moneyempiregetrich",
+        "appStore": ""
+      }
+    },
+    {
+      "id": 2,
+      "title": "Traction Rush: Endless Climb",
+      "category": "Simulation",
+      "description": "Traction Rush: Endless Climb delivers an intense and \nrealistic offroad driving experience where every climb is a challenge!",
+      "image": "",
+      "video": "",
+      "youtubeId": "",
+      "links": {
+        "googlePlay": "https://play.google.com/store/apps/details?id=com.rynkargames.tractionrushendlessclimb",
+        "appStore": ""
+      }
+    }
+  ]
+}

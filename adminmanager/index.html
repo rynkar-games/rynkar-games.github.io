@@ -52,17 +52,17 @@
                 <button onclick="showTab('games')" class="tab-btn w-full text-left glass p-4 rounded-xl border-l-4 border-transparent hover:border-indigo-500/50 flex items-center gap-3 transition-all">
                     <i class="fas fa-gamepad"></i> Oyun Yönetimi
                 </button>
+                <button onclick="showTab('social')" class="tab-btn w-full text-left glass p-4 rounded-xl border-l-4 border-transparent hover:border-indigo-500/50 flex items-center gap-3 transition-all">
+                    <i class="fas fa-share-alt"></i> Sosyal Medya
+                </button>
                 <button onclick="showTab('colors')" class="tab-btn w-full text-left glass p-4 rounded-xl border-l-4 border-transparent hover:border-indigo-500/50 flex items-center gap-3 transition-all">
                     <i class="fas fa-palette"></i> Renk Ayarları
                 </button>
                 <div class="pt-8">
-                    <button id="save-direct-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-900/20 transition-all transform hover:scale-105 mb-4">
-                        <i class="fas fa-cloud-upload-alt"></i> Sunucuya Kaydet
+                    <button id="save-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-900/20 transition-all transform hover:scale-105 mb-4">
+                        <i class="fas fa-save"></i> Değişiklikleri Kaydet
                     </button>
-                    <button id="generate-btn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all">
-                        <i class="fas fa-code"></i> Manuel Kod Al
-                    </button>
-                    <p class="text-[10px] text-slate-500 mt-2 text-center">Bu işlem sonucunda güncel HTML dosyasını indirebilir veya kopyalayabilirsiniz.</p>
+                    <p class="text-[10px] text-slate-500 mt-2 text-center">Bu işlem sonucunda güncel <strong>content.json</strong> dosyasını indirebilirsiniz.</p>
                 </div>
             </div>
 
@@ -95,18 +95,9 @@
                             <label class="block text-sm text-slate-400 mb-1">Hakkımızda Açıklama</label>
                             <textarea id="edit-about-desc" rows="4" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2"></textarea>
                         </div>
-                        <div class="pt-4 border-t border-slate-800">
-                            <h4 class="text-indigo-400 font-bold mb-3">Footer Ayarları</h4>
-                            <div class="space-y-4">
-                                <div>
-                                    <label class="block text-sm text-slate-400 mb-1">Footer Açıklama</label>
-                                    <input type="text" id="edit-footer-desc" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
-                                </div>
-                                <div>
-                                    <label class="block text-sm text-slate-400 mb-1">İletişim E-posta</label>
-                                    <input type="text" id="edit-contact-email" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
-                                </div>
-                            </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">İletişim E-posta</label>
+                            <input type="text" id="edit-contact-email" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
                         </div>
                     </div>
                 </div>
@@ -116,8 +107,26 @@
                         <h3 class="text-xl font-bold">Oyun Kartları</h3>
                         <button onclick="addGameRow()" class="px-4 py-2 bg-indigo-600/20 text-indigo-400 border border-indigo-500/30 rounded-lg text-sm hover:bg-indigo-600/40 transition-all">+ Yeni Oyun</button>
                     </div>
-                    <div id="games-list" class="space-y-4">
+                    <div id="games-list" class="space-y-6">
                         <!-- Game edit rows will be here -->
+                    </div>
+                </div>
+
+                <div id="social-tab" class="tab-content hidden glass p-8 rounded-2xl space-y-6">
+                    <h3 class="text-xl font-bold mb-4">Sosyal Medya Linkleri</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Google Play Geliştirici Sayfası</label>
+                            <input type="text" id="edit-social-gplay" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Instagram</label>
+                            <input type="text" id="edit-social-instagram" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">YouTube</label>
+                            <input type="text" id="edit-social-youtube" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
+                        </div>
                     </div>
                 </div>
 
@@ -144,29 +153,10 @@
         </div>
     </div>
 
-    <!-- Output Modal -->
-    <div id="modal" class="hidden fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-6">
-        <div class="w-full max-w-4xl glass p-8 rounded-3xl space-y-6 max-h-[90vh] flex flex-col">
-            <div class="flex justify-between items-center">
-                <h2 class="text-2xl font-bold">Yeni Site Kodunuz Hazır!</h2>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
-            </div>
-            <p class="text-slate-400">Aşağıdaki kodu kopyalayıp <strong>index.html</strong> dosyanızın içeriğiyle değiştirin.</p>
-            <div class="flex-1 relative min-h-0">
-                <textarea id="output-code" readonly class="w-full h-full bg-slate-950 border border-slate-800 rounded-xl p-4 font-mono text-xs text-indigo-300 focus:outline-none"></textarea>
-                <button onclick="copyCode()" class="absolute top-4 right-4 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-bold text-sm">Kopyala</button>
-            </div>
-            <div class="flex justify-center gap-4">
-                 <button onclick="downloadCode()" class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition-all">Dosya Olarak İndir</button>
-                 <button onclick="closeModal()" class="px-8 py-3 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold transition-all">Kapat</button>
-            </div>
-        </div>
-    </div>
-
     <script>
         const AUTH_USER = 'admin';
         const AUTH_PASS = 'Rynkar98!';
-        let siteDom = null;
+        let contentData = null;
 
         // Login Logic
         document.getElementById('login-form').addEventListener('submit', (e) => {
@@ -177,7 +167,7 @@
                 document.getElementById('login-section').classList.add('hidden');
                 document.getElementById('admin-section').classList.remove('hidden');
                 document.body.classList.remove('items-center', 'justify-center');
-                loadSiteData();
+                loadContentData();
             } else {
                 alert('Hatalı kullanıcı adı veya şifre!');
             }
@@ -197,81 +187,87 @@
         }
 
         // Data Loading
-        async function loadSiteData() {
+        async function loadContentData() {
             try {
-                const response = await fetch('../index.html');
-                const html = await response.text();
-                const parser = new DOMParser();
-                siteDom = parser.parseFromString(html, 'text/html');
+                const response = await fetch('../content.json');
+                contentData = await response.json();
 
                 // Fill General
-                document.getElementById('edit-logo').value = siteDom.getElementById('site-logo').innerText.trim();
-                document.getElementById('edit-hero-title').innerHTML = siteDom.getElementById('hero-title').innerHTML.trim();
-                document.getElementById('edit-hero-desc').value = siteDom.getElementById('hero-desc').innerText.trim();
-                
-                const heroBg = siteDom.getElementById('hero-bg-image');
-                if (heroBg && heroBg.style.backgroundImage) {
-                    document.getElementById('edit-hero-bg').value = heroBg.style.backgroundImage.slice(5, -2);
-                }
+                document.getElementById('edit-logo').value = contentData.siteSettings.logo;
+                document.getElementById('edit-hero-title').value = contentData.hero.title;
+                document.getElementById('edit-hero-bg').value = contentData.hero.backgroundImage;
+                document.getElementById('edit-hero-desc').value = contentData.hero.description;
+                document.getElementById('edit-about-title').value = contentData.about.title;
+                document.getElementById('edit-about-desc').value = contentData.about.description;
+                document.getElementById('edit-contact-email').value = contentData.siteSettings.contactEmail;
 
-                document.getElementById('edit-about-title').value = siteDom.getElementById('about-title').innerText.trim();
-                document.getElementById('edit-about-desc').value = siteDom.getElementById('about-desc').innerText.trim();
-                document.getElementById('edit-footer-desc').value = siteDom.getElementById('footer-desc').innerText.trim();
-                document.getElementById('edit-contact-email').value = siteDom.getElementById('contact-email').innerText.trim();
+                // Fill Social
+                document.getElementById('edit-social-gplay').value = contentData.siteSettings.socialLinks.googlePlay;
+                document.getElementById('edit-social-instagram').value = contentData.siteSettings.socialLinks.instagram;
+                document.getElementById('edit-social-youtube').value = contentData.siteSettings.socialLinks.youtube;
 
                 // Fill Colors
-                const styles = siteDom.querySelector('style').innerHTML;
-                const primaryMatch = styles.match(/--primary:\s*(#[0-9a-fA-F]{3,6})/);
-                const secondaryMatch = styles.match(/--secondary:\s*(#[0-9a-fA-F]{3,6})/);
-                
-                if (primaryMatch) {
-                    document.getElementById('edit-color-primary').value = primaryMatch[1];
-                    document.getElementById('edit-color-primary-hex').value = primaryMatch[1];
-                }
-                if (secondaryMatch) {
-                    document.getElementById('edit-color-secondary').value = secondaryMatch[1];
-                    document.getElementById('edit-color-secondary-hex').value = secondaryMatch[1];
-                }
+                document.getElementById('edit-color-primary').value = contentData.siteSettings.primaryColor;
+                document.getElementById('edit-color-primary-hex').value = contentData.siteSettings.primaryColor;
+                document.getElementById('edit-color-secondary').value = contentData.siteSettings.secondaryColor;
+                document.getElementById('edit-color-secondary-hex').value = contentData.siteSettings.secondaryColor;
 
                 // Fill Games
-                const games = siteDom.querySelectorAll('.game-card');
                 const list = document.getElementById('games-list');
                 list.innerHTML = '';
-                games.forEach(game => {
-                    const title = game.querySelector('.game-title').innerText;
-                    const category = game.querySelector('.game-category').innerText;
-                    const desc = game.querySelector('.game-desc').innerText;
-                    const image = game.querySelector('.game-img-el')?.src || '';
-                    const video = game.querySelector('.game-video-el')?.src || '';
-                    const gplay = game.querySelector('.gplay-link')?.href || '';
-                    const apple = game.querySelector('.apple-link')?.href || '';
-                    addGameRow(title, category, desc, image, video, gplay, apple);
+                contentData.games.forEach(game => {
+                    addGameRow(game.title, game.category, game.description, game.image, game.video, game.youtubeId, game.links.googlePlay, game.links.appStore);
                 });
 
             } catch (err) {
                 console.error('Veri yüklenemedi:', err);
-                alert('index.html dosyası okunamadı. Dosyanın kök dizinde olduğundan emin olun.');
+                alert('content.json dosyası okunamadı.');
             }
         }
 
-        function addGameRow(title = '', category = '', desc = '', image = '', video = '', gplay = '', apple = '') {
+        function addGameRow(title = '', category = '', desc = '', image = '', video = '', youtubeId = '', gplay = '', apple = '') {
             const div = document.createElement('div');
-            div.className = 'game-item glass p-4 rounded-xl space-y-3 relative';
+            div.className = 'game-item glass p-4 rounded-xl space-y-3 relative border border-slate-700';
             div.innerHTML = `
                 <button onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-red-500 hover:text-red-400"><i class="fas fa-trash"></i></button>
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Oyun Adı" value="${title}" class="g-title bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
-                    <input type="text" placeholder="Kategori" value="${category}" class="g-category bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">Oyun Adı</label>
+                        <input type="text" value="${title}" class="g-title w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">Kategori</label>
+                        <input type="text" value="${category}" class="g-category w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                </div>
+                <div class="grid grid-cols-3 gap-4">
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">Görsel URL</label>
+                        <input type="text" value="${image}" class="g-image w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">Video URL (.mp4)</label>
+                        <input type="text" value="${video}" class="g-video w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">YouTube ID (Örn: dQw4w9WgXcQ)</label>
+                        <input type="text" value="${youtubeId}" class="g-youtube w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Görsel URL" value="${image}" class="g-image bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
-                    <input type="text" placeholder="Video URL (Opsiyonel)" value="${video}" class="g-video bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">Google Play Link</label>
+                        <input type="text" value="${gplay}" class="g-gplay w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">App Store Link</label>
+                        <input type="text" value="${apple}" class="g-apple w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm">
+                    </div>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <input type="text" placeholder="Google Play Link" value="${gplay}" class="g-gplay bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
-                    <input type="text" placeholder="App Store Link" value="${apple}" class="g-apple bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                <div>
+                    <label class="block text-[10px] text-slate-500 mb-1 uppercase font-bold">Açıklama</label>
+                    <textarea class="g-desc w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm" rows="2">${desc}</textarea>
                 </div>
-                <textarea placeholder="Kısa Açıklama" class="g-desc w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm" rows="2">${desc}</textarea>
             `;
             document.getElementById('games-list').appendChild(div);
         }
@@ -280,148 +276,73 @@
         document.getElementById('edit-color-primary').addEventListener('input', e => document.getElementById('edit-color-primary-hex').value = e.target.value);
         document.getElementById('edit-color-secondary').addEventListener('input', e => document.getElementById('edit-color-secondary-hex').value = e.target.value);
 
-        // Generate Logic function to be reused
-        function generateFinalHtml() {
-            if (!siteDom) return null;
+        // Save Logic
+        document.getElementById('save-btn').addEventListener('click', async () => {
+            const updatedData = {
+                siteSettings: {
+                    logo: document.getElementById('edit-logo').value,
+                    primaryColor: document.getElementById('edit-color-primary-hex').value,
+                    secondaryColor: document.getElementById('edit-color-secondary-hex').value,
+                    contactEmail: document.getElementById('edit-contact-email').value,
+                    socialLinks: {
+                        googlePlay: document.getElementById('edit-social-gplay').value,
+                        instagram: document.getElementById('edit-social-instagram').value,
+                        youtube: document.getElementById('edit-social-youtube').value
+                    }
+                },
+                hero: {
+                    title: document.getElementById('edit-hero-title').value,
+                    description: document.getElementById('edit-hero-desc').value,
+                    backgroundImage: document.getElementById('edit-hero-bg').value
+                },
+                about: {
+                    title: document.getElementById('edit-about-title').value,
+                    description: document.getElementById('edit-about-desc').value
+                },
+                games: []
+            };
 
-            // Apply General
-            siteDom.getElementById('site-logo').innerText = document.getElementById('edit-logo').value;
-            siteDom.getElementById('hero-title').innerHTML = document.getElementById('edit-hero-title').value; 
-            siteDom.getElementById('hero-desc').innerText = document.getElementById('edit-hero-desc').value;
-            
-            const heroBgUrl = document.getElementById('edit-hero-bg').value;
-            if (heroBgUrl) {
-                siteDom.getElementById('hero-bg-image').style.backgroundImage = `url('${heroBgUrl}')`;
-            } else {
-                siteDom.getElementById('hero-bg-image').style.backgroundImage = '';
-            }
-
-            siteDom.getElementById('about-title').innerText = document.getElementById('edit-about-title').value;
-            siteDom.getElementById('about-desc').innerText = document.getElementById('edit-about-desc').value;
-            siteDom.getElementById('footer-logo').innerText = document.getElementById('edit-logo').value;
-            siteDom.getElementById('footer-desc').innerText = document.getElementById('edit-footer-desc').value;
-            siteDom.getElementById('contact-email').innerText = document.getElementById('edit-contact-email').value;
-
-            // Apply Colors
-            const p = document.getElementById('edit-color-primary-hex').value;
-            const s = document.getElementById('edit-color-secondary-hex').value;
-            let styleContent = siteDom.querySelector('style').innerHTML;
-            styleContent = styleContent.replace(/--primary:\s*(#[0-9a-fA-F]{3,6})/, `--primary: ${p}`);
-            styleContent = styleContent.replace(/--primary-dark:\s*(#[0-9a-fA-F]{3,6})/, `--primary-dark: ${p}`);
-            styleContent = styleContent.replace(/--secondary:\s*(#[0-9a-fA-F]{3,6})/, `--secondary: ${s}`);
-            siteDom.querySelector('style').innerHTML = styleContent;
-
-            // Apply Games
-            const container = siteDom.getElementById('games-container');
-            container.innerHTML = '<!-- Games dynamically generated -->';
-            document.querySelectorAll('.game-item').forEach(item => {
-                const title = item.querySelector('.g-title').value;
-                const cat = item.querySelector('.g-category').value;
-                const desc = item.querySelector('.g-desc').value;
-                const img = item.querySelector('.g-image').value;
-                const vid = item.querySelector('.g-video').value;
-                const gplay = item.querySelector('.g-gplay').value;
-                const apple = item.querySelector('.g-apple').value;
-
-                let mediaContent = `<div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">Oyun Görseli Gelecek</div>`;
-                if (img) mediaContent = `<img src="${img}" class="game-img-el absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">`;
-                if (vid) mediaContent += `<video src="${vid}" class="game-video-el absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>`;
-
-                let storeLinks = '';
-                if (gplay) storeLinks += `<a href="${gplay}" class="gplay-link text-2xl text-white/50 hover:text-white transition-colors"><i class="fab fa-google-play"></i></a>`;
-                if (apple) storeLinks += `<a href="${apple}" class="apple-link text-2xl text-white/50 hover:text-white transition-colors"><i class="fab fa-apple"></i></a>`;
-
-                const card = `
-                <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
-                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
-                        ${mediaContent}
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
-                        <div class="absolute bottom-4 right-4 flex gap-3 z-10">
-                            ${storeLinks}
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <span class="game-category text-xs font-bold text-indigo-400 uppercase tracking-widest">${cat}</span>
-                        <h3 class="game-title text-xl font-bold mt-2 mb-3">${title}</h3>
-                        <p class="game-desc text-slate-400 text-sm leading-relaxed">${desc}</p>
-                    </div>
-                </div>`;
-                container.innerHTML += card;
+            document.querySelectorAll('.game-item').forEach((item, index) => {
+                updatedData.games.push({
+                    id: index + 1,
+                    title: item.querySelector('.g-title').value,
+                    category: item.querySelector('.g-category').value,
+                    description: item.querySelector('.g-desc').value,
+                    image: item.querySelector('.g-image').value,
+                    video: item.querySelector('.g-video').value,
+                    youtubeId: item.querySelector('.g-youtube').value,
+                    links: {
+                        googlePlay: item.querySelector('.g-gplay').value,
+                        appStore: item.querySelector('.g-apple').value
+                    }
+                });
             });
 
-            // Update Social Links and Footer
-            const contactSection = siteDom.querySelector('#contact');
-            if (contactSection) {
-                const socialDiv = contactSection.querySelector('.flex.space-x-4.mb-6');
-                if (socialDiv) {
-                    socialDiv.innerHTML = `
-                        <a href="https://play.google.com/store/apps/dev?id=5331897451907345688" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-google-play"></i></a>
-                        <a href="https://www.instagram.com/rynkargames/" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@RynkarGames/shorts" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-youtube"></i></a>
-                    `;
-                }
-                
-                const quickLinks = contactSection.querySelector('ul.space-y-4');
-                if (quickLinks && !quickLinks.innerHTML.includes('app-ads.txt')) {
-                    quickLinks.innerHTML += `<li><a href="app-ads.txt" class="hover:text-indigo-400 transition-colors">app-ads.txt</a></li>`;
-                }
-            }
-
-            return "<!DOCTYPE html>\n" + siteDom.documentElement.outerHTML;
-        }
-
-        // Generate Logic
-        document.getElementById('generate-btn').addEventListener('click', () => {
-            const finalHtml = generateFinalHtml();
-            if (!finalHtml) return;
-            document.getElementById('output-code').value = finalHtml;
-            document.getElementById('modal').classList.remove('hidden');
-        });
-
-        // Direct Save Logic (Experimental - works if served with a simple saver backend)
-        document.getElementById('save-direct-btn').addEventListener('click', async () => {
-            const finalHtml = generateFinalHtml();
-            if (!finalHtml) return;
-
+            const jsonStr = JSON.stringify(updatedData, null, 2);
+            
             try {
-                // We try to use a local endpoint if available, or fallback to download
-                const response = await fetch('/save-site', {
+                // Try direct save if endpoint exists
+                const response = await fetch('/save-content', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ html: finalHtml })
+                    body: jsonStr
                 });
 
                 if (response.ok) {
                     alert('Değişiklikler başarıyla kaydedildi!');
                 } else {
-                    throw new Error('Endpoint not found');
+                    throw new Error('Save endpoint not available');
                 }
             } catch (err) {
-                console.log('Sunucu kaydı başarısız, manuel indirmeye yönlendiriliyor...');
-                const blob = new Blob([finalHtml], { type: 'text/html' });
+                // Fallback to download
+                const blob = new Blob([jsonStr], { type: 'application/json' });
                 const anchor = document.createElement('a');
-                anchor.download = 'index.html';
+                anchor.download = 'content.json';
                 anchor.href = window.URL.createObjectURL(blob);
                 anchor.click();
-                alert('Değişiklikler uygulandı ve index.html olarak indirildi. Lütfen mevcut dosya ile değiştirin.');
+                alert('Değişiklikler uygulandı. Lütfen indirilen content.json dosyasını mevcut olanla değiştirin.');
             }
         });
-
-        function closeModal() { document.getElementById('modal').classList.add('hidden'); }
-        function copyCode() {
-            const ta = document.getElementById('output-code');
-            ta.select();
-            document.execCommand('copy');
-            alert('Kod panoya kopyalandı!');
-        }
-        function downloadCode() {
-            const text = document.getElementById('output-code').value;
-            const blob = new Blob([text], { type: 'text/html' });
-            const anchor = document.createElement('a');
-            anchor.download = 'index.html';
-            anchor.href = window.URL.createObjectURL(blob);
-            anchor.click();
-        }
 
         document.getElementById('logout-btn').addEventListener('click', () => location.reload());
     </script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rynkar Games | Geleceğin Oyun Deneyimi</title>
+    <title>Rynkar Games | The Future of Gaming</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
@@ -23,8 +23,9 @@
             inset: 0;
             background-size: cover;
             background-position: center;
-            opacity: 0.2;
+            opacity: 0.3;
             z-index: 0;
+            filter: blur(8px);
         }
         .text-gradient {
             background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -35,25 +36,56 @@
         .bg-primary-hover:hover { background-color: var(--primary-dark); }
         .border-primary { border-color: var(--primary); }
         .text-primary { color: var(--primary); }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.9);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            width: 100%;
+            max-width: 900px;
+            aspect-ratio: 16/9;
+            background: #000;
+            position: relative;
+        }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white">
+
+    <!-- Video Modal -->
+    <div id="video-modal" class="modal" onclick="closeVideo()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button onclick="closeVideo()" class="absolute -top-12 right-0 text-white text-3xl hover:text-indigo-400 transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+            <iframe id="video-frame" class="w-full h-full" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
 
     <!-- Navbar -->
     <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
+                <div class="flex items-center gap-3">
+                    <img src="assets/general-images/RynkarGames-Logo-1024.png" alt="Rynkar Games" class="h-12 w-12 rounded-xl object-cover">
                     <span id="site-logo" class="text-2xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
                         RYNKAR GAMES
                     </span>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#home" class="hover:text-indigo-400 px-3 py-2 transition-colors">Ana Sayfa</a>
-                        <a href="#games" class="hover:text-indigo-400 px-3 py-2 transition-colors">Oyunlarımız</a>
-                        <a href="#about" class="hover:text-indigo-400 px-3 py-2 transition-colors">Hakkımızda</a>
-                        <a href="#contact" class="bg-primary bg-primary-hover px-5 py-2 rounded-full transition-all">İletişim</a>
+                        <a href="#home" target="_blank" class="hover:text-indigo-400 px-3 py-2 transition-colors">Home</a>
+                        <a href="#games" target="_blank" class="hover:text-indigo-400 px-3 py-2 transition-colors">Games</a>
+                        <a href="#about" target="_blank" class="hover:text-indigo-400 px-3 py-2 transition-colors">About</a>
+                        <a href="#contact" target="_blank" class="bg-primary bg-primary-hover px-5 py-2 rounded-full transition-all">Contact</a>
                     </div>
                 </div>
             </div>
@@ -66,18 +98,18 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
                 <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
-                    Hayal Gücünüzün <br/>
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">Sınırlarını Zorlayın</span>
+                    Push the Limits <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">of Your Imagination</span>
                 </h1>
                 <p id="hero-desc" class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-                    Rynkar Games olarak, unutulmaz hikayeler ve eşsiz oyun mekanikleriyle yeni dünyalar inşa ediyoruz. Dijital eğlencenin geleceğini birlikte şekillendirelim.
+                    At Rynkar Games, we build new worlds with unforgettable stories and unique gameplay mechanics. Let's shape the future of digital entertainment together.
                 </p>
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <a href="#games" class="px-8 py-4 bg-primary bg-primary-hover rounded-xl font-bold transition-all transform hover:scale-105">
-                        Oyunları Keşfet
+                    <a href="#games" target="_blank" class="px-8 py-4 bg-primary bg-primary-hover rounded-xl font-bold transition-all transform hover:scale-105">
+                        Discover Games
                     </a>
-                    <a href="#about" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold transition-all border border-slate-700">
-                        Bizi Tanıyın
+                    <a href="#about" target="_blank" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold transition-all border border-slate-700">
+                        Get to Know Us
                     </a>
                 </div>
             </div>
@@ -94,7 +126,7 @@
     <section id="games" class="py-24 bg-slate-900/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mb-16 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4">Geliştirdiğimiz Dünyalar</h2>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Games</h2>
                 <div class="w-20 h-1.5 bg-primary mx-auto rounded-full"></div>
             </div>
             
@@ -109,9 +141,9 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2">
-                    <h2 id="about-title" class="text-4xl font-bold mb-6">Biz Kimiz?</h2>
+                    <h2 id="about-title" class="text-4xl font-bold mb-6">Who We Are</h2>
                     <p id="about-desc" class="text-slate-400 text-lg mb-6 leading-relaxed">
-                        Rynkar Games, tutkulu oyuncular ve deneyimli geliştiriciler tarafından kurulmuş bağımsız bir oyun stüdyosudur. Amacımız sadece oyun oynamak değil, oyunculara unutamayacakları deneyimler yaşatmaktır.
+                        Rynkar Games is an independent game studio founded by passionate gamers and experienced developers. Our goal is not just to play games, but to give players experiences they will never forget.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-start gap-4">
@@ -119,8 +151,8 @@
                                 <i class="fas fa-rocket"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Yenilikçi Teknoloji</h4>
-                                <p class="text-slate-400 text-sm">En güncel oyun motorları ile en yüksek performansı hedefliyoruz.</p>
+                                <h4 class="font-bold">Innovative Technology</h4>
+                                <p class="text-slate-400 text-sm">We aim for the highest performance with the latest game engines.</p>
                             </div>
                         </div>
                         <div class="flex items-start gap-4">
@@ -128,14 +160,15 @@
                                 <i class="fas fa-heart"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold">Tutkuyla Tasarlandı</h4>
-                                <p class="text-slate-400 text-sm">Her pikselde ve her satır kodda oyuncu deneyimini önemsiyoruz.</p>
+                                <h4 class="font-bold">Designed with Passion</h4>
+                                <p class="text-slate-400 text-sm">We care about the player experience in every pixel and every line of code.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-1/2 w-full aspect-square bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl border border-slate-800 flex items-center justify-center relative overflow-hidden">
-                   <div class="text-6xl text-indigo-500/50 font-black rotate-12">RYNKAR</div>
+                   <img src="assets/general-images/RynkarGames-Logo-1024.png" alt="Rynkar Games Logo" class="absolute inset-0 w-full h-full object-cover opacity-30 rounded-3xl">
+                   <div class="text-6xl text-indigo-500/50 font-black rotate-12 relative z-10">RYNKAR</div>
                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
                 </div>
             </div>
@@ -147,37 +180,145 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
-                    <span id="footer-logo" class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
-                        RYNKAR GAMES
-                    </span>
+                    <div class="flex items-center gap-3">
+                        <img src="assets/general-images/RynkarGames-Logo-1024.png" alt="Rynkar Games" class="h-8 w-8 rounded-lg object-cover">
+                        <span id="footer-logo" class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                            RYNKAR GAMES
+                        </span>
+                    </div>
                     <p id="footer-desc" class="mt-4 text-slate-500 text-sm">
-                        Geleceğin dünyalarını bugün inşa ediyoruz. Takipte kalın.
+                        Building the worlds of the future today. Stay tuned.
                     </p>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6">Hızlı Linkler</h4>
-                    <ul class="space-y-4 text-slate-400 text-sm">
-                        <li><a href="#home" class="hover:text-indigo-400 transition-colors">Ana Sayfa</a></li>
-                        <li><a href="#games" class="hover:text-indigo-400 transition-colors">Oyunlarımız</a></li>
-                        <li><a href="#about" class="hover:text-indigo-400 transition-colors">Hakkımızda</a></li>
-                        <li><a href="app-ads.txt" class="hover:text-indigo-400 transition-colors">app-ads.txt</a></li>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul id="footer-links" class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#home" target="_blank" class="hover:text-indigo-400 transition-colors">Home</a></li>
+                        <li><a href="#games" target="_blank" class="hover:text-indigo-400 transition-colors">Games</a></li>
+                        <li><a href="#about" target="_blank" class="hover:text-indigo-400 transition-colors">About</a></li>
+                        <li><a href="app-ads.txt" target="_blank" class="hover:text-indigo-400 transition-colors">app-ads.txt</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-6">Bize Ulaşın</h4>
-                    <div class="flex space-x-4 mb-6">
-                        <a href="https://play.google.com/store/apps/dev?id=5331897451907345688" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-google-play"></i></a>
-                        <a href="https://www.instagram.com/rynkargames/" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.youtube.com/@RynkarGames/shorts" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-youtube"></i></a>
+                    <h4 class="font-bold mb-6">Contact Us</h4>
+                    <div id="footer-social" class="flex space-x-4 mb-6">
+                        <!-- Social links generated -->
                     </div>
                     <p id="contact-email" class="text-slate-400 text-sm">rynkarthegod@gmail.com</p>
                 </div>
             </div>
             <div class="border-t border-slate-900 pt-10 text-center text-slate-600 text-xs">
-                &copy; 2026 Rynkar Games. Tüm hakları saklıdır.
+                &copy; 2026 Rynkar Games. All rights reserved.
             </div>
         </div>
     </footer>
+
+    <script>
+        async function loadContent() {
+            try {
+                const response = await fetch('content.json');
+                const data = await response.json();
+                
+                // Site Settings
+                document.title = `Rynkar Games | ${data.siteSettings.logo}`;
+                document.getElementById('site-logo').innerText = data.siteSettings.logo;
+                document.getElementById('footer-logo').innerText = data.siteSettings.logo;
+                document.getElementById('contact-email').innerText = data.siteSettings.contactEmail;
+                
+                // Colors
+                document.documentElement.style.setProperty('--primary', data.siteSettings.primaryColor);
+                document.documentElement.style.setProperty('--secondary', data.siteSettings.secondaryColor);
+                
+                // Hero
+                if (data.hero.title) {
+                    document.getElementById('hero-title').innerHTML = data.hero.title;
+                }
+                if (data.hero.description) {
+                    document.getElementById('hero-desc').innerText = data.hero.description;
+                }
+                if (data.hero.backgroundImage) {
+                    document.getElementById('hero-bg-image').style.backgroundImage = `url('${data.hero.backgroundImage}')`;
+                }
+                
+                // About
+                if (data.about.title) {
+                    document.getElementById('about-title').innerText = data.about.title;
+                }
+                if (data.about.description) {
+                    document.getElementById('about-desc').innerText = data.about.description;
+                }
+                
+                // Social Links
+                const socialContainer = document.getElementById('footer-social');
+                socialContainer.innerHTML = `
+                    <a href="${data.siteSettings.socialLinks.googlePlay}" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-google-play"></i></a>
+                    <a href="${data.siteSettings.socialLinks.instagram}" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="${data.siteSettings.socialLinks.youtube}" target="_blank" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-youtube"></i></a>
+                `;
+                
+                // Games
+                const gamesContainer = document.getElementById('games-container');
+                gamesContainer.innerHTML = '';
+                
+                data.games.forEach(game => {
+                    let mediaContent = `<div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">Game Image Coming Soon</div>`;
+                    if (game.image) {
+                        mediaContent = `<img src="${game.image}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">`;
+                    }
+                    if (game.video) {
+                        mediaContent += `<video src="${game.video}" class="absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>`;
+                    }
+                    
+                    let actions = '';
+                    if (game.youtubeId) {
+                        actions += `<button onclick="openVideo('${game.youtubeId}')" class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center text-white hover:bg-red-700 transition-all shadow-lg shadow-red-900/40"><i class="fab fa-youtube"></i></button>`;
+                    }
+                    if (game.links.googlePlay) {
+                        actions += `<a href="${game.links.googlePlay}" target="_blank" class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-900/40"><i class="fab fa-google-play"></i></a>`;
+                    }
+                    if (game.links.appStore) {
+                        actions += `<a href="${game.links.appStore}" target="_blank" class="w-10 h-10 bg-slate-700 rounded-full flex items-center justify-center text-white hover:bg-slate-800 transition-all shadow-lg shadow-slate-900/40"><i class="fab fa-apple"></i></a>`;
+                    }
+
+                    const card = `
+                        <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
+                            <div class="aspect-video bg-slate-700 relative overflow-hidden">
+                                ${mediaContent}
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                                <div class="absolute bottom-4 right-4 flex gap-3 z-10">
+                                    ${actions}
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">${game.category}</span>
+                                <h3 class="text-xl font-bold mt-2 mb-3">${game.title}</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed">${game.description}</p>
+                            </div>
+                        </div>
+                    `;
+                    gamesContainer.innerHTML += card;
+                });
+            } catch (error) {
+                console.error('Error loading content:', error);
+            }
+        }
+
+        function openVideo(id) {
+            const modal = document.getElementById('video-modal');
+            const frame = document.getElementById('video-frame');
+            frame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            modal.classList.add('active');
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('video-modal');
+            const frame = document.getElementById('video-frame');
+            frame.src = '';
+            modal.classList.remove('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', loadContent);
+    </script>
 
 </body>
 </html>
