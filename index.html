@@ -18,6 +18,14 @@
             background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
                         radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent);
         }
+        #hero-bg-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+            z-index: 0;
+        }
         .text-gradient {
             background: linear-gradient(to right, var(--primary), var(--secondary));
             -webkit-background-clip: text;
@@ -54,6 +62,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
+        <div id="hero-bg-image"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center">
                 <h1 id="hero-title" class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
@@ -90,56 +99,7 @@
             </div>
             
             <div id="games-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Game Card 1 -->
-                <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
-                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
-                            Oyun Görseli Gelecek
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="game-category text-xs font-bold text-indigo-400 uppercase tracking-widest">Aksiyon / RPG</span>
-                        <h3 class="game-title text-xl font-bold mt-2 mb-3">Project: Neon Shadows</h3>
-                        <p class="game-desc text-slate-400 text-sm leading-relaxed">
-                            Siberpunk bir dünyada hayatta kalma mücadelesi. Kendi kaderinizi belirleyin.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Game Card 2 -->
-                <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
-                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
-                            Oyun Görseli Gelecek
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="game-category text-xs font-bold text-indigo-400 uppercase tracking-widest">Bulmaca / Macera</span>
-                        <h3 class="game-title text-xl font-bold mt-2 mb-3">Void Walker</h3>
-                        <p class="game-desc text-slate-400 text-sm leading-relaxed">
-                            Boyutlar arası geçişler yaparak gizemleri çözün ve antik sırları keşfedin.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Game Card 3 -->
-                <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
-                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
-                            Oyun Görseli Gelecek
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
-                    </div>
-                    <div class="p-6">
-                        <span class="game-category text-xs font-bold text-indigo-400 uppercase tracking-widest">Strateji</span>
-                        <h3 class="game-title text-xl font-bold mt-2 mb-3">Galactic Conquest</h3>
-                        <p class="game-desc text-slate-400 text-sm leading-relaxed">
-                            Yıldız sistemlerini fethedin ve galaktik imparatorluğunuzu kurun.
-                        </p>
-                    </div>
-                </div>
+                <!-- Games dynamically generated -->
             </div>
         </div>
     </section>

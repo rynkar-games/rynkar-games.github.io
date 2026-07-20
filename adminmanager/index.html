@@ -56,8 +56,11 @@
                     <i class="fas fa-palette"></i> Renk Ayarları
                 </button>
                 <div class="pt-8">
-                    <button id="generate-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-green-900/20 transition-all transform hover:scale-105">
-                        <i class="fas fa-save"></i> Güncelle ve Kodu Al
+                    <button id="save-direct-btn" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-indigo-900/20 transition-all transform hover:scale-105 mb-4">
+                        <i class="fas fa-cloud-upload-alt"></i> Sunucuya Kaydet
+                    </button>
+                    <button id="generate-btn" class="w-full bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-all">
+                        <i class="fas fa-code"></i> Manuel Kod Al
                     </button>
                     <p class="text-[10px] text-slate-500 mt-2 text-center">Bu işlem sonucunda güncel HTML dosyasını indirebilir veya kopyalayabilirsiniz.</p>
                 </div>
@@ -75,6 +78,10 @@
                         <div>
                             <label class="block text-sm text-slate-400 mb-1">Hero Başlık</label>
                             <input type="text" id="edit-hero-title" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2">
+                        </div>
+                        <div>
+                            <label class="block text-sm text-slate-400 mb-1">Hero Arkaplan Resmi (URL)</label>
+                            <input type="text" id="edit-hero-bg" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2" placeholder="https://example.com/image.jpg">
                         </div>
                         <div>
                             <label class="block text-sm text-slate-400 mb-1">Hero Açıklama</label>
@@ -201,6 +208,12 @@
                 document.getElementById('edit-logo').value = siteDom.getElementById('site-logo').innerText.trim();
                 document.getElementById('edit-hero-title').innerHTML = siteDom.getElementById('hero-title').innerHTML.trim();
                 document.getElementById('edit-hero-desc').value = siteDom.getElementById('hero-desc').innerText.trim();
+                
+                const heroBg = siteDom.getElementById('hero-bg-image');
+                if (heroBg && heroBg.style.backgroundImage) {
+                    document.getElementById('edit-hero-bg').value = heroBg.style.backgroundImage.slice(5, -2);
+                }
+
                 document.getElementById('edit-about-title').value = siteDom.getElementById('about-title').innerText.trim();
                 document.getElementById('edit-about-desc').value = siteDom.getElementById('about-desc').innerText.trim();
                 document.getElementById('edit-footer-desc').value = siteDom.getElementById('footer-desc').innerText.trim();
@@ -228,7 +241,11 @@
                     const title = game.querySelector('.game-title').innerText;
                     const category = game.querySelector('.game-category').innerText;
                     const desc = game.querySelector('.game-desc').innerText;
-                    addGameRow(title, category, desc);
+                    const image = game.querySelector('.game-img-el')?.src || '';
+                    const video = game.querySelector('.game-video-el')?.src || '';
+                    const gplay = game.querySelector('.gplay-link')?.href || '';
+                    const apple = game.querySelector('.apple-link')?.href || '';
+                    addGameRow(title, category, desc, image, video, gplay, apple);
                 });
 
             } catch (err) {
@@ -237,7 +254,7 @@
             }
         }
 
-        function addGameRow(title = '', category = '', desc = '') {
+        function addGameRow(title = '', category = '', desc = '', image = '', video = '', gplay = '', apple = '') {
             const div = document.createElement('div');
             div.className = 'game-item glass p-4 rounded-xl space-y-3 relative';
             div.innerHTML = `
@@ -245,6 +262,14 @@
                 <div class="grid grid-cols-2 gap-4">
                     <input type="text" placeholder="Oyun Adı" value="${title}" class="g-title bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
                     <input type="text" placeholder="Kategori" value="${category}" class="g-category bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Görsel URL" value="${image}" class="g-image bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                    <input type="text" placeholder="Video URL (Opsiyonel)" value="${video}" class="g-video bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" placeholder="Google Play Link" value="${gplay}" class="g-gplay bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
+                    <input type="text" placeholder="App Store Link" value="${apple}" class="g-apple bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm">
                 </div>
                 <textarea placeholder="Kısa Açıklama" class="g-desc w-full bg-slate-900 border border-slate-700 rounded-lg px-4 py-2 text-sm" rows="2">${desc}</textarea>
             `;
@@ -255,14 +280,22 @@
         document.getElementById('edit-color-primary').addEventListener('input', e => document.getElementById('edit-color-primary-hex').value = e.target.value);
         document.getElementById('edit-color-secondary').addEventListener('input', e => document.getElementById('edit-color-secondary-hex').value = e.target.value);
 
-        // Generate Logic
-        document.getElementById('generate-btn').addEventListener('click', () => {
-            if (!siteDom) return;
+        // Generate Logic function to be reused
+        function generateFinalHtml() {
+            if (!siteDom) return null;
 
             // Apply General
             siteDom.getElementById('site-logo').innerText = document.getElementById('edit-logo').value;
-            siteDom.getElementById('hero-title').innerHTML = document.getElementById('edit-hero-title').value; // Using innerHTML for <br> support
+            siteDom.getElementById('hero-title').innerHTML = document.getElementById('edit-hero-title').value; 
             siteDom.getElementById('hero-desc').innerText = document.getElementById('edit-hero-desc').value;
+            
+            const heroBgUrl = document.getElementById('edit-hero-bg').value;
+            if (heroBgUrl) {
+                siteDom.getElementById('hero-bg-image').style.backgroundImage = `url('${heroBgUrl}')`;
+            } else {
+                siteDom.getElementById('hero-bg-image').style.backgroundImage = '';
+            }
+
             siteDom.getElementById('about-title').innerText = document.getElementById('edit-about-title').value;
             siteDom.getElementById('about-desc').innerText = document.getElementById('edit-about-desc').value;
             siteDom.getElementById('footer-logo').innerText = document.getElementById('edit-logo').value;
@@ -285,14 +318,27 @@
                 const title = item.querySelector('.g-title').value;
                 const cat = item.querySelector('.g-category').value;
                 const desc = item.querySelector('.g-desc').value;
+                const img = item.querySelector('.g-image').value;
+                const vid = item.querySelector('.g-video').value;
+                const gplay = item.querySelector('.g-gplay').value;
+                const apple = item.querySelector('.g-apple').value;
+
+                let mediaContent = `<div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">Oyun Görseli Gelecek</div>`;
+                if (img) mediaContent = `<img src="${img}" class="game-img-el absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">`;
+                if (vid) mediaContent += `<video src="${vid}" class="game-video-el absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>`;
+
+                let storeLinks = '';
+                if (gplay) storeLinks += `<a href="${gplay}" class="gplay-link text-2xl text-white/50 hover:text-white transition-colors"><i class="fab fa-google-play"></i></a>`;
+                if (apple) storeLinks += `<a href="${apple}" class="apple-link text-2xl text-white/50 hover:text-white transition-colors"><i class="fab fa-apple"></i></a>`;
 
                 const card = `
                 <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
                     <div class="aspect-video bg-slate-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
-                            Oyun Görseli Gelecek
-                        </div>
+                        ${mediaContent}
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                        <div class="absolute bottom-4 right-4 flex gap-3 z-10">
+                            ${storeLinks}
+                        </div>
                     </div>
                     <div class="p-6">
                         <span class="game-category text-xs font-bold text-indigo-400 uppercase tracking-widest">${cat}</span>
@@ -303,10 +349,44 @@
                 container.innerHTML += card;
             });
 
-            // Show Modal
-            const finalHtml = "<!DOCTYPE html>\n" + siteDom.documentElement.outerHTML;
+            return "<!DOCTYPE html>\n" + siteDom.documentElement.outerHTML;
+        }
+
+        // Generate Logic
+        document.getElementById('generate-btn').addEventListener('click', () => {
+            const finalHtml = generateFinalHtml();
+            if (!finalHtml) return;
             document.getElementById('output-code').value = finalHtml;
             document.getElementById('modal').classList.remove('hidden');
+        });
+
+        // Direct Save Logic (Experimental - works if served with a simple saver backend)
+        document.getElementById('save-direct-btn').addEventListener('click', async () => {
+            const finalHtml = generateFinalHtml();
+            if (!finalHtml) return;
+
+            try {
+                // We try to use a local endpoint if available, or fallback to download
+                const response = await fetch('/save-site', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ html: finalHtml })
+                });
+
+                if (response.ok) {
+                    alert('Değişiklikler başarıyla kaydedildi!');
+                } else {
+                    throw new Error('Endpoint not found');
+                }
+            } catch (err) {
+                console.log('Sunucu kaydı başarısız, manuel indirmeye yönlendiriliyor...');
+                const blob = new Blob([finalHtml], { type: 'text/html' });
+                const anchor = document.createElement('a');
+                anchor.download = 'index.html';
+                anchor.href = window.URL.createObjectURL(blob);
+                anchor.click();
+                alert('Değişiklikler uygulandı ve index.html olarak indirildi. Lütfen mevcut dosya ile değiştirin.');
+            }
         });
 
         function closeModal() { document.getElementById('modal').classList.add('hidden'); }
