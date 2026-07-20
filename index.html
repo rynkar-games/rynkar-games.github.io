@@ -1,10 +1,209 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-<title>Rynkar Games</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rynkar Games | Geleceğin Oyun Deneyimi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent),
+                        radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.15), transparent);
+        }
+    </style>
 </head>
-<body>
-<h1>Rynkar Games</h1>
-<p>Official website.</p>
+<body class="bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <span class="text-2xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                        RYNKAR GAMES
+                    </span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-indigo-400 px-3 py-2 transition-colors">Ana Sayfa</a>
+                        <a href="#games" class="hover:text-indigo-400 px-3 py-2 transition-colors">Oyunlarımız</a>
+                        <a href="#about" class="hover:text-indigo-400 px-3 py-2 transition-colors">Hakkımızda</a>
+                        <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 px-5 py-2 rounded-full transition-all">İletişim</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">
+                    Hayal Gücünüzün <br/>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 to-purple-500">Sınırlarını Zorlayın</span>
+                </h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto mb-10">
+                    Rynkar Games olarak, unutulmaz hikayeler ve eşsiz oyun mekanikleriyle yeni dünyalar inşa ediyoruz. Dijital eğlencenin geleceğini birlikte şekillendirelim.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#games" class="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-xl font-bold transition-all transform hover:scale-105">
+                        Oyunları Keşfet
+                    </a>
+                    <a href="#about" class="px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-xl font-bold transition-all border border-slate-700">
+                        Bizi Tanıyın
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Background Elements -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-0 opacity-30 pointer-events-none">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/20 rounded-full blur-[120px]"></div>
+            <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px]"></div>
+        </div>
+    </section>
+
+    <!-- Games Section -->
+    <section id="games" class="py-24 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Geliştirdiğimiz Dünyalar</h2>
+                <div class="w-20 h-1.5 bg-indigo-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Game Card 1 -->
+                <div class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
+                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
+                            Oyun Görseli Gelecek
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Aksiyon / RPG</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3">Project: Neon Shadows</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Siberpunk bir dünyada hayatta kalma mücadelesi. Kendi kaderinizi belirleyin.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Game Card 2 -->
+                <div class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
+                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
+                            Oyun Görseli Gelecek
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Bulmaca / Macera</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3">Void Walker</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Boyutlar arası geçişler yaparak gizemleri çözün ve antik sırları keşfedin.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Game Card 3 -->
+                <div class="group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
+                    <div class="aspect-video bg-slate-700 relative overflow-hidden">
+                        <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
+                            Oyun Görseli Gelecek
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
+                    </div>
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-indigo-400 uppercase tracking-widest">Strateji</span>
+                        <h3 class="text-xl font-bold mt-2 mb-3">Galactic Conquest</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed">
+                            Yıldız sistemlerini fethedin ve galaktik imparatorluğunuzu kurun.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-bold mb-6">Biz Kimiz?</h2>
+                    <p class="text-slate-400 text-lg mb-6 leading-relaxed">
+                        Rynkar Games, tutkulu oyuncular ve deneyimli geliştiriciler tarafından kurulmuş bağımsız bir oyun stüdyosudur. Amacımız sadece oyun oynamak değil, oyunculara unutamayacakları deneyimler yaşatmaktır.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-indigo-500/10 rounded-lg flex items-center justify-center text-indigo-500 shrink-0">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Yenilikçi Teknoloji</h4>
+                                <p class="text-slate-400 text-sm">En güncel oyun motorları ile en yüksek performansı hedefliyoruz.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center text-purple-500 shrink-0">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Tutkuyla Tasarlandı</h4>
+                                <p class="text-slate-400 text-sm">Her pikselde ve her satır kodda oyuncu deneyimini önemsiyoruz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full aspect-square bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-3xl border border-slate-800 flex items-center justify-center relative overflow-hidden">
+                   <div class="text-6xl text-indigo-500/50 font-black rotate-12">RYNKAR</div>
+                   <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="bg-slate-950 border-t border-slate-800 pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <span class="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                        RYNKAR GAMES
+                    </span>
+                    <p class="mt-4 text-slate-500 text-sm">
+                        Geleceğin dünyalarını bugün inşa ediyoruz. Takipte kalın.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Hızlı Linkler</h4>
+                    <ul class="space-y-4 text-slate-400 text-sm">
+                        <li><a href="#home" class="hover:text-indigo-400 transition-colors">Ana Sayfa</a></li>
+                        <li><a href="#games" class="hover:text-indigo-400 transition-colors">Oyunlarımız</a></li>
+                        <li><a href="#about" class="hover:text-indigo-400 transition-colors">Hakkımızda</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Bize Ulaşın</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-indigo-600 transition-all"><i class="fab fa-youtube"></i></a>
+                    </div>
+                    <p class="text-slate-400 text-sm">contact@rynkargames.com</p>
+                </div>
+            </div>
+            <div class="border-t border-slate-900 pt-10 text-center text-slate-600 text-xs">
+                &copy; 2026 Rynkar Games. Tüm hakları saklıdır.
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
