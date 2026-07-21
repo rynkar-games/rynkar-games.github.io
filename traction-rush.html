@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traction Rush: Endless Climb | Rynkar Games</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+        :root {
+            --primary: #6366f1;
+            --secondary: #a855f7;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 selection:bg-indigo-500 selection:text-white min-h-screen flex flex-col">
+
+    <!-- Navbar -->
+    <nav class="w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                    <img src="assets/general-images/RynkarGames-Logo-1024.png" alt="Rynkar Games" class="h-10 w-10 rounded-lg object-cover">
+                    <span class="text-xl font-extrabold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
+                        RYNKAR GAMES
+                    </span>
+                </a>
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <!-- Left Side: Visuals -->
+            <div class="space-y-6">
+                <div class="rounded-3xl overflow-hidden border border-slate-800 shadow-2xl">
+                    <img id="game-image" src="assets/general-images/TractionRushBanner.png" alt="Traction Rush" class="w-full h-auto">
+                </div>
+                <div class="aspect-video rounded-3xl overflow-hidden border border-slate-800 bg-slate-900">
+                    <iframe id="youtube-frame" class="w-full h-full" src="https://www.youtube.com/embed/9e9q9tmkfx4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <!-- Right Side: Info -->
+            <div class="space-y-8">
+                <div>
+                    <span class="text-indigo-400 font-bold uppercase tracking-widest text-sm">Simulation</span>
+                    <h1 class="text-4xl md:text-5xl font-black mt-2 mb-4">Traction Rush: Endless Climb</h1>
+                    <div class="w-20 h-1.5 bg-indigo-500 rounded-full"></div>
+                </div>
+
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Traction Rush: Endless Climb delivers an intense and realistic offroad driving experience where every climb is a challenge! 
+                    Experience the thrill of mastering difficult terrains, managing your vehicle's traction, and reaching new heights.
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="https://play.google.com/store/apps/details?id=com.rynkargames.tractionrushendlessclimb" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 rounded-2xl font-bold transition-all transform hover:scale-105 shadow-xl shadow-indigo-900/20">
+                        <i class="fab fa-google-play text-2xl"></i>
+                        <div class="text-left">
+                            <div class="text-xs opacity-80 font-normal">GET IT ON</div>
+                            <div class="text-xl leading-tight">Google Play</div>
+                        </div>
+                    </a>
+                    <a href="https://www.youtube.com/shorts/9e9q9tmkfx4" target="_blank" class="flex items-center gap-3 px-8 py-4 bg-slate-800 hover:bg-slate-700 rounded-2xl font-bold transition-all border border-slate-700">
+                        <i class="fab fa-youtube text-2xl text-red-500"></i>
+                        <span>Watch Trailer</span>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-2 gap-6 pt-8 border-t border-slate-800">
+                    <div>
+                        <h4 class="text-slate-500 text-sm uppercase font-bold tracking-wider">Developer</h4>
+                        <p class="font-semibold">Rynkar Games</p>
+                    </div>
+                    <div>
+                        <h4 class="text-slate-500 text-sm uppercase font-bold tracking-wider">Release Date</h4>
+                        <p class="font-semibold">2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots Gallery -->
+        <div class="mt-20 border-t border-slate-800 pt-16">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <i class="fas fa-camera text-indigo-500"></i>
+                Screenshots
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-indigo-500/50 transition-colors cursor-zoom-in">
+                    <img src="assets/general-images/TractionRushBanner.png" alt="Screenshot 1" class="w-full h-full object-cover aspect-[9/16] md:aspect-auto">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-indigo-500/50 transition-colors cursor-zoom-in">
+                    <img src="assets/general-images/TractionRushBanner.png" alt="Screenshot 2" class="w-full h-full object-cover aspect-[9/16] md:aspect-auto">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-indigo-500/50 transition-colors cursor-zoom-in">
+                    <img src="assets/general-images/TractionRushBanner.png" alt="Screenshot 3" class="w-full h-full object-cover aspect-[9/16] md:aspect-auto">
+                </div>
+                <div class="rounded-2xl overflow-hidden border border-slate-800 hover:border-indigo-500/50 transition-colors cursor-zoom-in">
+                    <img src="assets/general-images/TractionRushBanner.png" alt="Screenshot 4" class="w-full h-full object-cover aspect-[9/16] md:aspect-auto">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800 py-10">
+        <div class="max-w-7xl mx-auto px-4 text-center text-slate-600 text-sm">
+            &copy; 2026 Rynkar Games. All rights reserved.
+        </div>
+    </footer>
+
+</body>
+</html>

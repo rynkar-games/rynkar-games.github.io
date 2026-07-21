@@ -281,11 +281,11 @@
                     }
 
                     const card = `
-                        <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all">
+                        <div class="game-card group bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 hover:border-indigo-500/50 transition-all cursor-pointer" onclick="location.href='${game.slug}.html'">
                             <div class="aspect-video bg-slate-700 relative overflow-hidden">
                                 ${mediaContent}
                                 <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent opacity-60"></div>
-                                <div class="absolute bottom-4 right-4 flex gap-3 z-10">
+                                <div class="absolute bottom-4 right-4 flex gap-3 z-10" onclick="event.stopPropagation()">
                                     ${actions}
                                 </div>
                             </div>
@@ -306,7 +306,13 @@
         function openVideo(id) {
             const modal = document.getElementById('video-modal');
             const frame = document.getElementById('video-frame');
-            frame.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            // Extract video ID from full URL if necessary
+            let videoId = id;
+            if (id.includes('youtube.com/') || id.includes('youtu.be/')) {
+                const parts = id.split('/');
+                videoId = parts[parts.length - 1];
+            }
+            frame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
             modal.classList.add('active');
         }
 

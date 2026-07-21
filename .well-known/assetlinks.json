@@ -1,0 +1,22 @@
+﻿[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.rynkargames.moneyempiregetrich",
+      "sha256_cert_fingerprints": [
+        "67:4E:A3:58:0F:66:27:82:1E:FB:8B:DF:90:61:63:7D:0F:B9:BF:ED:BC:DC:D4:FD:C8:9B:86:29:D2:91:8A:13"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.rynkargames.tractionrushendlessclimb",
+      "sha256_cert_fingerprints": [
+        "D6:E1:EE:0F:0C:06:C7:61:8F:BA:F8:F7:61:58:DD:7A:C0:08:0B:CA:58:86:58:E5:25:0E:DB:F2:49:F8:DA:1A"
+      ]
+    }
+  }
+]
