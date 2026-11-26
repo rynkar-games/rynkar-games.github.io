@@ -1,14 +1,16 @@
-﻿{
+{
   "siteSettings": {
     "logo": "RYNKAR GAMES",
-    "primaryColor": "#6366f1",
-    "secondaryColor": "#a855f7",
+    "primaryColor": "#d5b56d",
+    "secondaryColor": "#f0deb1",
     "contactEmail": "rynkarthegod@gmail.com",
     "socialLinks": {
       "googlePlay": "https://play.google.com/store/apps/dev?id=5331897451907345688",
       "instagram": "https://www.instagram.com/rynkargames/",
       "youtube": "https://www.youtube.com/@RynkarGames/shorts"
-    }
+    },
+    "logoImage": "assets/general-images/RynkarGames-Logo-1024.png",
+    "description": "Independent minds. Playful worlds. Discover Money Empire and Traction Rush, made by Rynkar Games."
   },
   "hero": {
     "title": "Don't push too hard <br> <span class=\"text-gradient\">Neither do we.</span>",
@@ -28,17 +30,90 @@
       "image": "assets/general-images/MoneyEmpireBanner.png",
       "slug": "money-empire",
       "screenshots": [
-        "assets/general-images/MoneyEmpireBanner.png",
-        "assets/general-images/MoneyEmpireBanner.png",
-        "assets/general-images/MoneyEmpireBanner.png",
-        "assets/general-images/MoneyEmpireBanner.png"
+        "assets/app-images/money-empire/money-empire-1.png",
+        "assets/app-images/money-empire/money-empire-2.png",
+        "assets/app-images/money-empire/money-empire-3.png",
+        "assets/app-images/money-empire/money-empire-4.png"
       ],
       "video": "",
       "youtubeId": "https://www.youtube.com/shorts/WVfoafzZ-r8",
       "links": {
         "googlePlay": "https://play.google.com/store/apps/details?id=com.rynkargames.moneyempiregetrich",
         "appStore": ""
-      }
+      },
+      "terms": {
+        "title": "Terms of Service",
+        "updated": "2026-11-13",
+        "intro": "Welcome to {{gameTitle}}, developed and published by {{studioName}} (\"we\", \"us\", or \"our\"). By downloading, installing, or using the game, you agree to these Terms of Service. If you do not agree with these terms, please do not use the game.",
+        "sections": [
+          {
+            "title": "Use of the Game",
+            "paragraphs": [
+              "{{gameTitle}} is provided for personal entertainment purposes. You agree not to:"
+            ],
+            "items": [
+              "Use the game for any unlawful purpose.",
+              "Modify, reverse engineer, or attempt to exploit the game.",
+              "Interfere with the game's functionality.",
+              "Use cheats, hacks, or unauthorized third-party software to gain an unfair advantage."
+            ]
+          },
+          {
+            "title": "Advertisements",
+            "paragraphs": [
+              "The game may display advertisements provided by third-party advertising partners. These partners may collect and process certain information in accordance with their own privacy policies.",
+              "We are not responsible for the content, products, or services offered through third-party advertisements."
+            ],
+            "items": []
+          },
+          {
+            "title": "Virtual Currency and Game Progress",
+            "paragraphs": [
+              "The game may include virtual currency, rewards, items, and other in-game features.",
+              "These virtual items are provided for entertainment purposes only. They have no real-world monetary value, cannot be exchanged for real money, and cannot be transferred or sold outside the game.",
+              "We reserve the right to make changes to game features, virtual rewards, and gameplay mechanics when necessary."
+            ],
+            "items": []
+          },
+          {
+            "title": "Intellectual Property",
+            "paragraphs": [
+              "All game content, including graphics, designs, sounds, logos, and software, is owned by or licensed to {{studioName}}. You may not copy, distribute, modify, or commercially exploit any part of the game without prior written permission."
+            ],
+            "items": []
+          },
+          {
+            "title": "Disclaimer",
+            "paragraphs": [
+              "The game is provided \"as is\" and \"as available\", without warranties of any kind. We do not guarantee that the game will always be available, error-free, or compatible with every device."
+            ],
+            "items": []
+          },
+          {
+            "title": "Limitation of Liability",
+            "paragraphs": [
+              "To the maximum extent permitted by applicable law, {{studioName}} shall not be liable for any indirect, incidental, or consequential damages arising from the use of or inability to use the game.",
+              "Nothing in these Terms excludes or limits liability where such exclusion or limitation is not permitted by applicable law."
+            ],
+            "items": []
+          },
+          {
+            "title": "Changes to These Terms",
+            "paragraphs": [
+              "We reserve the right to update or modify these Terms of Service at any time. Updated versions will be published on this page."
+            ],
+            "items": []
+          },
+          {
+            "title": "Contact",
+            "paragraphs": [
+              "If you have any questions about these Terms of Service, please contact us:"
+            ],
+            "items": []
+          }
+        ]
+      },
+      "releaseDate": "2026"
     },
     {
       "id": 2,
@@ -48,18 +123,104 @@
       "image": "assets/general-images/TractionRushBanner.png",
       "slug": "traction-rush",
       "screenshots": [
-        "assets/general-images/traction-rush-1.png",
-        "assets/general-images/traction-rush-2.png",
-        "assets/general-images/traction-rush-3.png",
-        "assets/general-images/traction-rush-4.png",
-        "assets/general-images/traction-rush-5.png"
+        "assets/app-images/traction-rush/traction-rush-1.png",
+        "assets/app-images/traction-rush/traction-rush-2.jpg",
+        "assets/app-images/traction-rush/traction-rush-3.jpg",
+        "assets/app-images/traction-rush/traction-rush-4.jpg",
+        "assets/app-images/traction-rush/traction-rush-5.jpg"
       ],
       "video": "",
       "youtubeId": "https://www.youtube.com/shorts/9e9q9tmkfx4",
       "links": {
         "googlePlay": "https://play.google.com/store/apps/details?id=com.rynkargames.tractionrushendlessclimb",
         "appStore": ""
-      }
+      },
+      "terms": {
+        "title": "Terms of Service",
+        "updated": "2026-11-13",
+        "intro": "Welcome to {{gameTitle}}, developed and published by {{studioName}} (\"we\", \"us\", or \"our\"). By downloading, installing, or using the game, you agree to these Terms of Service. If you do not agree with these terms, please do not use the game.",
+        "sections": [
+          {
+            "title": "Use of the Game",
+            "paragraphs": [
+              "{{gameTitle}} is provided for personal entertainment purposes. You agree not to:"
+            ],
+            "items": [
+              "Use the game for any unlawful purpose.",
+              "Modify, reverse engineer, or attempt to exploit the game.",
+              "Interfere with the game's functionality.",
+              "Use cheats, hacks, or unauthorized third-party software to gain an unfair advantage."
+            ]
+          },
+          {
+            "title": "Advertisements",
+            "paragraphs": [
+              "The game may display advertisements provided by third-party advertising partners. These partners may collect and process certain information in accordance with their own privacy policies.",
+              "We are not responsible for the content, products, or services offered through third-party advertisements."
+            ],
+            "items": []
+          },
+          {
+            "title": "In-App Purchases",
+            "paragraphs": [
+              "The game may offer optional in-app purchases, including digital items or other features.",
+              "All purchases are processed through Google Play and are subject to Google's applicable terms and payment policies.",
+              "In-app purchases are intended for use within the game and have no real-world monetary value outside the game, unless otherwise required by applicable law."
+            ],
+            "items": []
+          },
+          {
+            "title": "Intellectual Property",
+            "paragraphs": [
+              "All game content, including graphics, designs, sounds, logos, and software, is owned by or licensed to {{studioName}}. You may not copy, distribute, modify, or commercially exploit any part of the game without prior written permission."
+            ],
+            "items": []
+          },
+          {
+            "title": "Disclaimer",
+            "paragraphs": [
+              "The game is provided \"as is\" and \"as available\", without warranties of any kind. We do not guarantee that the game will always be available, error-free, or compatible with every device."
+            ],
+            "items": []
+          },
+          {
+            "title": "Limitation of Liability",
+            "paragraphs": [
+              "To the maximum extent permitted by applicable law, {{studioName}} shall not be liable for any indirect, incidental, or consequential damages arising from the use of or inability to use the game.",
+              "Nothing in these Terms excludes or limits liability where such exclusion or limitation is not permitted by applicable law."
+            ],
+            "items": []
+          },
+          {
+            "title": "Changes to These Terms",
+            "paragraphs": [
+              "We reserve the right to update or modify these Terms of Service at any time. Updated versions will be published on this page."
+            ],
+            "items": []
+          },
+          {
+            "title": "Contact",
+            "paragraphs": [
+              "If you have any questions about these Terms of Service, please contact us:"
+            ],
+            "items": []
+          }
+        ]
+      },
+      "releaseDate": "2026"
     }
-  ]
+  ],
+  "copy": {
+    "heroEyebrow": "Independent by nature",
+    "heroLead": "Pretty chill. Not very corporate. Definitely making games.",
+    "gamesEyebrow": "Made to be played",
+    "gamesTitle": "Small studio. Big escapes.",
+    "gamesDescription": "Build an empire. Take the unbeaten path. Find your next little obsession.",
+    "studioEyebrow": "The people behind the play",
+    "storyTitle": "A little curiosity. A lot of play.",
+    "contactEyebrow": "Good games start with a conversation",
+    "contactTitle": "Have something in mind?",
+    "contactDescription": "A question, a wild idea, or a bug that looks suspiciously like a feature. We’re listening.",
+    "footerText": "Independent minds. Playful worlds."
+  }
 }

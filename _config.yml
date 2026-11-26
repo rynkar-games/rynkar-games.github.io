@@ -1,0 +1,4 @@
+exclude:
+  - _local-editor
+include:
+  - .well-known

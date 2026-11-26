@@ -1,0 +1,4 @@
+# Private local editor and temporary content copies
+/_local-editor/
+content.json.*.tmp
+/*-terms.html.*.tmp
